@@ -21,16 +21,17 @@ import './commands';
 require('cypress-xpath');
 
 // To change preferable Cypress selector order
-Cypress.SelectorPlayground.defaults({
-  selectorPriority: [
-    'data-wc',
-    'data-cy',
-    'data-test',
-    'data-testid',
-    'id',
-    'class',
-    'attributes',
-    'tags',
-    'nth-child',
-  ],
-});
+// This brakes the Selector Playground up to cypress version 6.0.0
+// Cypress.SelectorPlayground.defaults({
+//   selectorPriority: [
+    // 'data-wc',
+    // 'data-cy',
+    // 'data-test',
+    // 'data-testid',
+    // 'id',
+    // 'class',
+    // 'attributes',
+    // 'tags',
+    // 'nth-child',
+//   ],
+// });
