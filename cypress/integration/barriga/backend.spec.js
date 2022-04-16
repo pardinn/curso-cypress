@@ -6,6 +6,8 @@
 // victor@pardinn
 // 1234
 
+import dayjs from 'dayjs';
+
 describe('Should test at a functional level', () => {
   // let token;
 
@@ -80,8 +82,8 @@ describe('Should test at a functional level', () => {
           // headers: { Authorization: `JWT ${token}` },
           body: {
             conta_id: contaId,
-            data_pagamento: Cypress.moment().add({ days: 1 }).format('DD/MM/YYYY'),
-            data_transacao: Cypress.moment().format('DD/MM/YYYY'),
+            data_pagamento: dayjs().add(1, 'day').format('DD/MM/YYYY'),
+            data_transacao: dayjs().format('DD/MM/YYYY'),
             descricao: 'desc',
             envolvido: 'inter',
             status: true,
@@ -118,8 +120,8 @@ describe('Should test at a functional level', () => {
           // headers: { Authorization: `JWT ${token}` },
           body: {
             status: true,
-            data_transacao: Cypress.moment(res.data_transacao).format('DD/MM/YYYY'),
-            data_pagamento: Cypress.moment(res.data_pagamento).format('DD/MM/YYYY'),
+            data_transacao: dayjs(res.data_transacao).format('DD/MM/YYYY'),
+            data_pagamento: dayjs(res.data_pagamento).format('DD/MM/YYYY'),
             descricao: res.descricao,
             envolvido: res.envolvido,
             valor: res.valor,
