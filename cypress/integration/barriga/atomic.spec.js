@@ -47,6 +47,7 @@ describe('Should test at a functional level', () => {
     cy.get(loc.MENU.MOVIMENTACAO).click();
 
     cy.get(loc.MOVIMENTACAO.DESCRICAO).type('Desc');
+    cy.get(loc.MESSAGE).should('not.exist')
     cy.get(loc.MOVIMENTACAO.VALOR).type('123');
     cy.get(loc.MOVIMENTACAO.INTERESSADO).type('Inter');
     cy.get(loc.MOVIMENTACAO.CONTA).select('Conta para movimentacoes');
