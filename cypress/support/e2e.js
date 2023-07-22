@@ -24,14 +24,14 @@ require('cypress-xpath');
 // This brakes the Selector Playground up to cypress version 6.0.0
 // Cypress.SelectorPlayground.defaults({
 //   selectorPriority: [
-    // 'data-wc',
-    // 'data-cy',
-    // 'data-test',
-    // 'data-testid',
-    // 'id',
-    // 'class',
-    // 'attributes',
-    // 'tags',
-    // 'nth-child',
+// 'data-wc',
+// 'data-cy',
+// 'data-test',
+// 'data-testid',
+// 'id',
+// 'class',
+// 'attributes',
+// 'tags',
+// 'nth-child',
 //   ],
 // });
