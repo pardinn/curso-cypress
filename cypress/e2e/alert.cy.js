@@ -2,12 +2,8 @@
 /// <reference types='cypress' />
 
 describe("Working with alerts", () => {
-  before(() => {
-    cy.visit("https://wcaquino.me/cypress/componentes.html");
-  });
-
   beforeEach(() => {
-    cy.reload();
+    cy.visit("https://wcaquino.me/cypress/componentes.html");
   });
 
   it("Alert", () => {

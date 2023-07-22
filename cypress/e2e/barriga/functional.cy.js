@@ -13,6 +13,11 @@ describe('Should test at a functional level', () => {
   before(() => {
     cy.login('victor@pardinn', '1234');
     cy.resetApp();
+    cy.clearAllLocalStorage();
+  });
+
+  beforeEach(() => {
+    cy.login('victor@pardinn', '1234');
   });
 
   it('Should create an account', () => {
@@ -24,9 +29,7 @@ describe('Should test at a functional level', () => {
   it('Should update an account', () => {
     cy.acessarMenuConta();
     cy.xpath(loc.CONTAS.FN_XP_BTN_ALTERAR('Minha primeira conta')).click();
-    cy.get(loc.CONTAS.NOME)
-      .clear()
-      .type('Conta alterada');
+    cy.get(loc.CONTAS.NOME).clear().type('Conta alterada');
     cy.get(loc.CONTAS.BTN_SALVAR).click();
     cy.get(loc.MESSAGE).should('contain', 'Conta atualizada com sucesso');
   });
@@ -56,7 +59,10 @@ describe('Should test at a functional level', () => {
 
   it('Should get balance', () => {
     cy.get(loc.MENU.HOME).click();
-    cy.xpath(loc.SALDO.FN_XP_SALDO_CONTA('Conta alterada')).should('contain', '123,00');
+    cy.xpath(loc.SALDO.FN_XP_SALDO_CONTA('Conta alterada')).should(
+      'contain',
+      '123,00',
+    );
   });
 
   it('Should remove a transaction', () => {

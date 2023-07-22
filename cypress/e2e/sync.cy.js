@@ -2,56 +2,46 @@
 /* eslint-disable arrow-parens */
 /// <reference types="cypress" />
 
-describe('Work with basic elements', () => {
-  before(() => {
-    cy.visit('https://www.wcaquino.me/cypress/componentes.html');
-  });
-
+describe("Work with basic elements", () => {
   beforeEach(() => {
-    cy.reload();
+    cy.visit("https://www.wcaquino.me/cypress/componentes.html");
   });
 
-  it('Deve aguardar elemento estar disponivel', () => {
-    cy.get('#novoCampo').should('not.exist');
-    cy.get('#buttonDelay').click();
-    cy.get('#novoCampo').should('not.exist');
-    cy.get('#novoCampo').should('exist');
-    cy.get('#novoCampo').type('funciona');
+  it("Deve aguardar elemento estar disponivel", () => {
+    cy.get("#novoCampo").should("not.exist");
+    cy.get("#buttonDelay").click();
+    cy.get("#novoCampo").should("not.exist");
+    cy.get("#novoCampo").should("exist");
+    cy.get("#novoCampo").type("funciona");
   });
 
-  it('Deve fazer retries', () => {
-    cy.get('#novoCampo').should('not.exist');
-    cy.get('#buttonDelay').click();
-    cy.get('#novoCampo').should('not.exist');
-    cy.get('#novoCampo')
+  it("Deve fazer retries", () => {
+    cy.get("#novoCampo").should("not.exist");
+    cy.get("#buttonDelay").click();
+    cy.get("#novoCampo").should("not.exist");
+    cy.get("#novoCampo")
       // .should('not.exist')
-      .should('exist')
-      .type('funciona');
+      .should("exist")
+      .type("funciona");
   });
 
-  it.only('Uso do find', () => {
-    cy.get('#buttonList').click();
-    cy.get('#lista li')
-      .find('span')
-      .should('contain', 'Item 1');
+  it.only("Uso do find", () => {
+    cy.get("#buttonList").click();
+    cy.get("#lista li").find("span").should("contain", "Item 1");
     // cy.get('#lista li')
     //   .find('span')
     //   .should('contain', 'Item 2');
-    cy.get('#lista li span')
-      .should('contain', 'Item 2');
+    cy.get("#lista li span").should("contain", "Item 2");
 
-    cy.get('#buttonListDOM').click();
-    cy.get('#lista li')
-      .find('span')
-      .should('contain', 'Item 1');
+    cy.get("#buttonListDOM").click();
+    cy.get("#lista li").find("span").should("contain", "Item 1");
     // cy.get('#lista li')
     //   .find('span')
     //   .should('contain', 'Item 2');
-    cy.get('#lista li span')
-      .should('contain', 'Item 2');
+    cy.get("#lista li span").should("contain", "Item 2");
   });
 
-  it.only('Uso do timeout', () => {
+  it.only("Uso do timeout", () => {
     // cy.get('#buttonDelay').click()
     // cy.get('#novoCampo', { timeout: 1000 }).should('exist')
     /**
@@ -70,21 +60,16 @@ describe('Work with basic elements', () => {
     //   .should('have.length', 1)
     //   .should('have.length', 2)
 
-    cy.get('#buttonListDOM').click();
-    cy.get('#lista li span')
-      .should('have.length', 1);
-    cy.get('#lista li span')
-      .should('have.length', 2);
+    cy.get("#buttonListDOM").click();
+    cy.get("#lista li span").should("have.length", 1);
+    cy.get("#lista li span").should("have.length", 2);
   });
 
-  it.only('Click retry', () => {
-    cy.get('#buttonCount')
-      .click()
-      .click()
-      .should('have.value', '111');
+  it.only("Click retry", () => {
+    cy.get("#buttonCount").click().click().should("have.value", "111");
   });
 
-  it.only('Should vs Then', () => {
+  it.only("Should vs Then", () => {
     // 1. 'should' fica executando a função enquanto aguarda o 'get' finalizar
     // cy.get('#buttonListDOM').click();
     // cy.get('#lista li span').should($el => {
@@ -119,12 +104,12 @@ describe('Work with basic elements', () => {
     // });
 
     // 6. 'then' pode ser útil nesse cenário
-    cy.get('#buttonListDOM').then($el => {
+    cy.get("#buttonListDOM").then(($el) => {
       // 'then' espera até que o 'get' finalize para executar para executar
       // utiliza o return de dentro da função
       // console.log($el);
       expect($el).to.have.length(1);
-      cy.get('#buttonList');
+      cy.get("#buttonList");
     });
   });
 });

@@ -55,7 +55,9 @@ Cypress.Commands.add('getToken', (user, passwd) => {
       redirecionar: false,
       senha: passwd,
     },
-  }).its('body.token').should('not.be.empty')
+  })
+    .its('body.token')
+    .should('not.be.empty')
     .then((token) => {
       Cypress.env('token', token);
       // return token;
@@ -67,7 +69,9 @@ Cypress.Commands.add('resetRest', () => {
     method: 'GET',
     url: '/reset',
     // headers: { Authorization: `JWT ${token}` },
-  }).its('status').should('be.equal', 200);
+  })
+    .its('status')
+    .should('be.equal', 200);
 });
 
 Cypress.Commands.add('getContaByName', (name) => {
