@@ -2,12 +2,8 @@
 /// <reference types='cypress' />
 
 describe('Working with alerts', () => {
-  before(() => {
-    cy.visit('https://wcaquino.me/cypress/componentes.html');
-  });
-
   beforeEach(() => {
-    cy.reload();
+    cy.visit('https://wcaquino.me/cypress/componentes.html');
   });
 
   it('Alert', () => {
@@ -21,9 +17,11 @@ describe('Working with alerts', () => {
   it('Alert com Mock', () => {
     const stub = cy.stub().as('alerta');
     cy.on('window:alert', stub);
-    cy.get('#alert').click().then(() => {
-      expect(stub.getCall(0)).to.be.calledWith('Alert Simples');
-    });
+    cy.get('#alert')
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith('Alert Simples');
+      });
   });
 
   it('Confirm', () => {
@@ -64,16 +62,25 @@ describe('Working with alerts', () => {
     const stub = cy.stub().as('alerta');
     cy.on('window:alert', stub);
 
-    cy.get('#formCadastrar').click()
-      .then(() => expect(stub.getCall(0)).to.be.calledWith('Nome eh obrigatorio'));
+    cy.get('#formCadastrar')
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith('Nome eh obrigatorio');
+      });
 
     cy.get('#formNome').type('Victor');
-    cy.get('#formCadastrar').click()
-      .then(() => expect(stub.getCall(1)).to.be.calledWith('Sobrenome eh obrigatorio'));
+    cy.get('#formCadastrar')
+      .click()
+      .then(() => {
+        expect(stub.getCall(1)).to.be.calledWith('Sobrenome eh obrigatorio');
+      });
 
     cy.get('[data-cy=dataSobrenome]').type('Moraes');
-    cy.get('#formCadastrar').click()
-      .then(() => expect(stub.getCall(2)).to.be.calledWith('Sexo eh obrigatorio'));
+    cy.get('#formCadastrar')
+      .click()
+      .then(() => {
+        expect(stub.getCall(2)).to.be.calledWith('Sexo eh obrigatorio');
+      });
 
     cy.get('#formSexoMasc').click();
     cy.get('#formCadastrar').click();

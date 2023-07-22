@@ -1,12 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Work with basic elements', () => {
-  before(() => {
-    cy.visit('https://www.wcaquino.me/cypress/componentes.html');
-  });
-
   beforeEach(() => {
-    cy.reload();
+    cy.visit('https://www.wcaquino.me/cypress/componentes.html');
   });
 
   it('Text', () => {
@@ -15,7 +11,10 @@ describe('Work with basic elements', () => {
     cy.get('span').should('contain', 'Cuidado');
     // cy.get('div').should('have.text', 'Cuidado');
     cy.get('.facilAchar').should('contain', 'Cuidado');
-    cy.get('.facilAchar').should('have.text', 'Cuidado onde clica, muitas armadilhas...');
+    cy.get('.facilAchar').should(
+      'have.text',
+      'Cuidado onde clica, muitas armadilhas...',
+    );
   });
 
   it('Links', () => {
@@ -37,8 +36,9 @@ describe('Work with basic elements', () => {
       .type('textarea')
       .should('have.value', 'textarea');
 
-    cy.get('#tabelaUsuarios > :nth-child(2) > :nth-child(1) > :nth-child(6)')
-      .type('???');
+    cy.get(
+      '#tabelaUsuarios > :nth-child(2) > :nth-child(1) > :nth-child(6)',
+    ).type('???');
 
     cy.get('[data-cy=dataSobrenome]')
       .type('Teste12345{backspace}{backspace}')
@@ -51,9 +51,7 @@ describe('Work with basic elements', () => {
   });
 
   it('RadioButton', () => {
-    cy.get('#formSexoFem')
-      .click()
-      .should('be.checked');
+    cy.get('#formSexoFem').click().should('be.checked');
 
     cy.get('#formSexoMasc').should('not.be.checked');
 
@@ -61,9 +59,7 @@ describe('Work with basic elements', () => {
   });
 
   it('Checkbox', () => {
-    cy.get('#formComidaPizza')
-      .click()
-      .should('be.checked');
+    cy.get('#formComidaPizza').click().should('be.checked');
 
     cy.get('[name=formComidaFavorita]').click({ multiple: true });
     cy.get('#formComidaPizza').should('not.be.checked');
@@ -90,8 +86,7 @@ describe('Work with basic elements', () => {
   });
 
   it.only('Combo multiplo', () => {
-    cy.get('[data-testid=dataEsportes]')
-      .select(['natacao', 'Corrida', 'nada']);
+    cy.get('[data-testid=dataEsportes]').select(['natacao', 'Corrida', 'nada']);
     // cy.get('[data-testid=dataEsportes]').should('have.value', ['natacao', 'Corrida', 'nada']);
     cy.get('[data-testid=dataEsportes]').then(($el) => {
       expect($el.val()).to.be.deep.equal(['natacao', 'Corrida', 'nada']);

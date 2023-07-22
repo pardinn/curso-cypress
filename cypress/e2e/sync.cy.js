@@ -3,12 +3,8 @@
 /// <reference types="cypress" />
 
 describe('Work with basic elements', () => {
-  before(() => {
-    cy.visit('https://www.wcaquino.me/cypress/componentes.html');
-  });
-
   beforeEach(() => {
-    cy.reload();
+    cy.visit('https://www.wcaquino.me/cypress/componentes.html');
   });
 
   it('Deve aguardar elemento estar disponivel', () => {
@@ -31,24 +27,18 @@ describe('Work with basic elements', () => {
 
   it.only('Uso do find', () => {
     cy.get('#buttonList').click();
-    cy.get('#lista li')
-      .find('span')
-      .should('contain', 'Item 1');
+    cy.get('#lista li').find('span').should('contain', 'Item 1');
     // cy.get('#lista li')
     //   .find('span')
     //   .should('contain', 'Item 2');
-    cy.get('#lista li span')
-      .should('contain', 'Item 2');
+    cy.get('#lista li span').should('contain', 'Item 2');
 
     cy.get('#buttonListDOM').click();
-    cy.get('#lista li')
-      .find('span')
-      .should('contain', 'Item 1');
+    cy.get('#lista li').find('span').should('contain', 'Item 1');
     // cy.get('#lista li')
     //   .find('span')
     //   .should('contain', 'Item 2');
-    cy.get('#lista li span')
-      .should('contain', 'Item 2');
+    cy.get('#lista li span').should('contain', 'Item 2');
   });
 
   it.only('Uso do timeout', () => {
@@ -71,17 +61,12 @@ describe('Work with basic elements', () => {
     //   .should('have.length', 2)
 
     cy.get('#buttonListDOM').click();
-    cy.get('#lista li span')
-      .should('have.length', 1);
-    cy.get('#lista li span')
-      .should('have.length', 2);
+    cy.get('#lista li span').should('have.length', 1);
+    cy.get('#lista li span').should('have.length', 2);
   });
 
   it.only('Click retry', () => {
-    cy.get('#buttonCount')
-      .click()
-      .click()
-      .should('have.value', '111');
+    cy.get('#buttonCount').click().click().should('have.value', '111');
   });
 
   it.only('Should vs Then', () => {
@@ -119,7 +104,7 @@ describe('Work with basic elements', () => {
     // });
 
     // 6. 'then' pode ser útil nesse cenário
-    cy.get('#buttonListDOM').then($el => {
+    cy.get('#buttonListDOM').then(($el) => {
       // 'then' espera até que o 'get' finalize para executar para executar
       // utiliza o return de dentro da função
       // console.log($el);
