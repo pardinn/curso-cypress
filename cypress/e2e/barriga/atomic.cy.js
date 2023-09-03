@@ -16,6 +16,10 @@ describe('Should test at a functional level', () => {
     cy.resetApp();
   });
 
+  afterEach(() => {
+    cy.clearAllLocalStorage();
+  });
+
   it('Should create an account', () => {
     cy.acessarMenuConta();
     cy.inserirConta('Minha primeira conta');

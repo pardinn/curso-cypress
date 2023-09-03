@@ -20,6 +20,10 @@ describe('Should test at a functional level', () => {
     cy.login('victor@pardinn', '1234');
   });
 
+  afterEach(() => {
+    cy.clearAllLocalStorage();
+  });
+
   it('Should create an account', () => {
     cy.acessarMenuConta();
     cy.inserirConta('Minha primeira conta');
