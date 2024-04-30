@@ -17,11 +17,8 @@ describe('Working with alerts', () => {
   it('Alert com Mock', () => {
     const stub = cy.stub().as('alerta');
     cy.on('window:alert', stub);
-    cy.get('#alert')
-      .click()
-      .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('Alert Simples');
-      });
+    cy.get('#alert').click();
+    cy.get('@alerta').should('have.been.calledWith', 'Alert Simples');
   });
 
   it('Confirm', () => {
@@ -62,25 +59,19 @@ describe('Working with alerts', () => {
     const stub = cy.stub().as('alerta');
     cy.on('window:alert', stub);
 
-    cy.get('#formCadastrar')
-      .click()
-      .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('Nome eh obrigatorio');
-      });
+    cy.get('#formCadastrar').click();
+    cy.get('@alerta').should('have.been.calledWith', 'Nome eh obrigatorio');
 
     cy.get('#formNome').type('Victor');
-    cy.get('#formCadastrar')
-      .click()
-      .then(() => {
-        expect(stub.getCall(1)).to.be.calledWith('Sobrenome eh obrigatorio');
-      });
+    cy.get('#formCadastrar').click();
+    cy.get('@alerta').should(
+      'have.been.calledWith',
+      'Sobrenome eh obrigatorio',
+    );
 
     cy.get('[data-cy=dataSobrenome]').type('Moraes');
-    cy.get('#formCadastrar')
-      .click()
-      .then(() => {
-        expect(stub.getCall(2)).to.be.calledWith('Sexo eh obrigatorio');
-      });
+    cy.get('#formCadastrar').click();
+    cy.get('@alerta').should('have.been.calledWith', 'Sexo eh obrigatorio');
 
     cy.get('#formSexoMasc').click();
     cy.get('#formCadastrar').click();

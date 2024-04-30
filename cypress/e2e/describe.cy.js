@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-it.only('An external test...', () => {
+it('An external test...', () => {
 
 });
 
@@ -17,7 +17,7 @@ describe('Should group tests...', () => {
     });
   });
 
-  it.only('An internal test...', () => {
+  it('An internal test...', () => {
 
   });
 });

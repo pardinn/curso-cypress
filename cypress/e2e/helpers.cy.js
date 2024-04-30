@@ -29,7 +29,7 @@ describe('Helpers...', () => {
     cy.wrap(1).should(() => 2).should('be.equal', 1);
   });
 
-  it.only('Its...', () => {
+  it('Its...', () => {
     const obj = { nome: 'User', idade: 20 };
     cy.wrap(obj).should('have.property', 'nome', 'User');
     cy.wrap(obj).its('nome').should('be.equal', 'User');
@@ -43,7 +43,7 @@ describe('Helpers...', () => {
     cy.title().its('length').should('be.equal', 20);
   });
 
-  it.only('Invoke...', () => {
+  it('Invoke...', () => {
     const getValue = () => 1;
     const soma = (a, b) => a + b;
 
