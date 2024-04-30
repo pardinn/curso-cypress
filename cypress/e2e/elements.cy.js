@@ -66,7 +66,7 @@ describe('Work with basic elements', () => {
     cy.get('#formComidaVegetariana').should('be.checked');
   });
 
-  it.only('Combo', () => {
+  it('Combo', () => {
     cy.get('[data-test=dataEscolaridade')
       .select('2o grau completo')
       .should('have.value', '2graucomp');
@@ -85,7 +85,7 @@ describe('Work with basic elements', () => {
     });
   });
 
-  it.only('Combo multiplo', () => {
+  it('Combo multiplo', () => {
     cy.get('[data-testid=dataEsportes]').select(['natacao', 'Corrida', 'nada']);
     // cy.get('[data-testid=dataEsportes]').should('have.value', ['natacao', 'Corrida', 'nada']);
     cy.get('[data-testid=dataEsportes]').then(($el) => {
