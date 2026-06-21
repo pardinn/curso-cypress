@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.8.1",
+    "cypress": "^15.17.0",
     "cypress-xpath": "^1.6.0",
     "dayjs": "^1.11.11"
   },
